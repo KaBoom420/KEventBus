@@ -34,6 +34,7 @@ kotlin {
             sourceSetTreeName = "test"
         }
     }
+
     iosX64()
     iosArm64()
     iosSimulatorArm64()
@@ -53,6 +54,31 @@ kotlin {
         }
     }
 }
+
+
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            from(components["kotlin"])
+            groupId = "com.github.KaBoom420"
+            artifactId = "KEventBus"
+            version = "1.0.0"
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/${project.findProperty("github.owner")}/${project.findProperty("github.repo")}")
+
+            credentials {
+                username = System.getenv("GITHUB_ACTOR") ?: project.findProperty("gpr.user")?.toString()
+                password = System.getenv("GITHUB_TOKEN") ?: project.findProperty("gpr.key")?.toString()
+            }
+        }
+    }
+}
+
 
 mavenPublishing {
     publishToMavenCentral()
