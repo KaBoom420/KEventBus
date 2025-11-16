@@ -32,4 +32,16 @@ Add JitPack to your repositories:
 repositories {
     maven { url = uri("https://jitpack.io") }
 }
+```
+### 🧩 Basic Usage
+
+#### 1️⃣ Define your events
+
+```kotlin
+sealed class AppEvent {
+    data class UserLoggedIn(val userId: String) : AppEvent()
+    object Logout : AppEvent()
+}
+```
+
 
