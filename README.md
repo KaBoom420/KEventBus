@@ -1,8 +1,8 @@
 # ⚡ Kotlin Multiplatform EventBus
-> KEventBus is a lightweight, Kotlin Multiplatform (KMP) event bus built on top of coroutines and SharedFlow.  
-It provides type-safe event delivery, optional TTL buffering, delayed event delivery, optional logging, and annotation-based subscribers powered by KSP.
+##KEventBus is a lightweight, Kotlin Multiplatform (KMP) event bus built on top of coroutines and SharedFlow.  
+##It provides type-safe event delivery, optional TTL buffering, delayed event delivery, optional logging, and annotation-based subscribers powered by KSP.
 
-Works on **Android, JVM, iOS, Desktop, and Kotlin Multiplatform** out of the box.
+>Works on **Android, JVM, iOS, Desktop, and Kotlin Multiplatform** out of the box.
 
 [![](https://jitpack.io/v/KaBoomDev/KaBoomEventBus.svg)](https://jitpack.io/#KaBoomDev/KaBoomEventBus)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.9.24-blue.svg?logo=kotlin)](https://kotlinlang.org)
