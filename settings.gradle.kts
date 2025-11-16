@@ -26,4 +26,5 @@ plugins {
 }
 
 rootProject.name = "KEventBus"
-include("lib")
+include(":KEventBus")
+include(":KEventBusDemo")
