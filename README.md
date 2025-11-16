@@ -1,4 +1,4 @@
-# ⚡ KaBoom EventBus
+# ⚡ Kotlin EventBus
 > A lightweight, coroutine-based **Multiplatform EventBus** with delayed delivery, TTL, logging, and compile-time generated subscribers via KSP.
 
 [![](https://jitpack.io/v/KaBoomDev/KaBoomEventBus.svg)](https://jitpack.io/#KaBoomDev/KaBoomEventBus)
