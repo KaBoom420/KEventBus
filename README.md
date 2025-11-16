@@ -33,6 +33,8 @@ repositories {
     maven { url = uri("https://jitpack.io") }
 }
 ```
+
+===
 ### 🧩 Basic Usage
 
 #### 1️⃣ Define your events
