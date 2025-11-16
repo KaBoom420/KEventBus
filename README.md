@@ -27,13 +27,18 @@ It provides type-safe event delivery, optional TTL buffering, delayed event deli
 ### 🚀 Installation
 
 Add JitPack to your repositories:
-
 ```kotlin
 repositories {
     maven { url = uri("https://jitpack.io") }
 }
 ```
 
+Add the dependency:
+```kotlin
+dependencies {
+    implementation("com.github.KaBoomDev:KEventBus:1.0.0")
+}
+```
 ---
 ### 🧩 Basic Usage
 
