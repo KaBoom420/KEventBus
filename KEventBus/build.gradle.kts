@@ -7,6 +7,8 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.vanniktech.mavenPublish)
+    alias(libs.plugins.ksp)
+
 }
 
 val androidMinSdk     : String by project
@@ -26,7 +28,7 @@ kotlin {
         minSdk     = androidMinSdk.toInt()
         version    = libVersion
 
-        withJava() // enable java compilation support
+        withJava()
         withHostTestBuilder {}.configure {}
         withDeviceTestBuilder {
             sourceSetTreeName = "test"
@@ -39,7 +41,11 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(libs.kotlinx.coroutines.core)
+        }
 
+        jvmMain.dependencies {
+            implementation(libs.symbol.processing.api)
         }
 
         commonTest.dependencies {
@@ -83,5 +89,4 @@ mavenPublishing {
             developerConnection.set("scm:git:ssh://git@github.com/KaBoom420/KEventBus.git")
         }
     }
-
 }
