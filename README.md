@@ -1,19 +1,31 @@
-[![official project](http://jb.gg/badges/official.svg)](https://github.com/JetBrains#jetbrains-on-github)
+# ⚡ KaBoom EventBus
+> A lightweight, coroutine-based **Multiplatform EventBus** with delayed delivery, TTL, logging, and compile-time generated subscribers via KSP.
 
-# Multiplatform library template
+[![](https://jitpack.io/v/KaBoomDev/KaBoomEventBus.svg)](https://jitpack.io/#KaBoomDev/KaBoomEventBus)
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.9.24-blue.svg?logo=kotlin)](https://kotlinlang.org)
+[![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)](LICENSE)
 
-## What is it?
+---
 
-This repository contains a simple library project, intended to demonstrate a [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) library that is deployable to [Maven Central](https://central.sonatype.com/).
+### ✨ Features
 
-The library has only one function: generate the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence) starting from platform-provided numbers. Also, it has a test for each platform just to be sure that tests run.
+- 🧠 **Multiplatform** — works on Android, Desktop, iOS, JVM.
+- ⚡ **Coroutine-powered** — built entirely on `StateFlow` / `SharedFlow`.
+- 🧩 **Type-safe** — events are strongly typed (`sealed class` recommended).
+- ⏳ **TTL (time-to-live)** for delayed events.
+- 🕒 **Queued delivery** — events posted before subscribers still arrive later.
+- 🔍 **Optional logging** with custom logger function (`println`, `Timber`, `Log.d`, etc).
+- 🧱 **DSL-style API** for posting and subscribing.
+- 🧰 **KSP integration** — compile-time codegen for `@SubscribeEvent`.
+- 🪄 **Zero reflection**, no magic, just Kotlin.
 
-Note that no other actions or tools usually required for the library development are set up, such as [tracking of backwards compatibility](https://kotlinlang.org/docs/jvm-api-guidelines-backward-compatibility.html#tools-designed-to-enforce-backward-compatibility), explicit API mode, licensing, contribution guideline, code of conduct and others. You can find a guide for best practices for designing Kotlin libraries [here](https://kotlinlang.org/docs/api-guidelines-introduction.html).
+---
 
-## Guide
+### 🚀 Installation
 
-Please find the detailed guide [here](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-publish-libraries.html).
+Add JitPack to your repositories:
 
-# Other resources
-* [Publishing via the Central Portal](https://central.sonatype.org/publish-ea/publish-ea-guide/)
-* [Gradle Maven Publish Plugin \- Publishing to Maven Central](https://vanniktech.github.io/gradle-maven-publish-plugin/central/)
+```kotlin
+repositories {
+    maven { url = uri("https://jitpack.io") }
+}
