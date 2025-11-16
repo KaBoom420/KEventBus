@@ -6,7 +6,8 @@ import kotlin.concurrent.Volatile
 
 object EventBus {
 
-    val defaultScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    @PublishedApi
+    internal val defaultScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
     private val _events = MutableSharedFlow<Any>(
         replay = 0,
