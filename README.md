@@ -51,10 +51,14 @@ sealed class AppEvent {
 ```
 #### 2️⃣ Subscribe to events
 ```kotlin
-sealed class AppEvent {
-    data class UserLoggedIn(val userId: String) : AppEvent()
-    object Logout : AppEvent()
+onEvent<AppEvent.UserLoggedIn> { event ->
+    println("👤 User logged in: ${event.userId}")
 }
+
+onEvent<AppEvent.Logout> {
+    println("🚪 User logged out")
+}
+
 ```
 
 ## To be continued...
