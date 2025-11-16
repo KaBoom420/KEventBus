@@ -43,12 +43,20 @@ dependencies {
 ### 🧩 Basic Usage
 
 #### 1️⃣ Define your events
-
 ```kotlin
 sealed class AppEvent {
     data class UserLoggedIn(val userId: String) : AppEvent()
     object Logout : AppEvent()
 }
 ```
+#### 2️⃣ Subscribe to events
+```kotlin
+sealed class AppEvent {
+    data class UserLoggedIn(val userId: String) : AppEvent()
+    object Logout : AppEvent()
+}
+```
+
+## To be continued...
 
 
