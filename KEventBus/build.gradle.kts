@@ -7,6 +7,8 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.vanniktech.mavenPublish)
+    alias(libs.plugins.ksp)
+
 }
 
 val androidMinSdk     : String by project
@@ -26,12 +28,13 @@ kotlin {
         minSdk     = androidMinSdk.toInt()
         version    = libVersion
 
-        withJava() // enable java compilation support
+        withJava()
         withHostTestBuilder {}.configure {}
         withDeviceTestBuilder {
             sourceSetTreeName = "test"
         }
     }
+
     iosX64()
     iosArm64()
     iosSimulatorArm64()
@@ -39,7 +42,11 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(libs.kotlinx.coroutines.core)
+        }
 
+        jvmMain.dependencies {
+            implementation(libs.symbol.processing.api)
         }
 
         commonTest.dependencies {
@@ -47,6 +54,31 @@ kotlin {
         }
     }
 }
+
+
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            from(components["kotlin"])
+            groupId = "com.github.KaBoom420"
+            artifactId = "KEventBus"
+            version = "1.0.0"
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/${project.findProperty("github.owner")}/${project.findProperty("github.repo")}")
+
+            credentials {
+                username = System.getenv("GITHUB_ACTOR") ?: project.findProperty("gpr.user")?.toString()
+                password = System.getenv("GITHUB_TOKEN") ?: project.findProperty("gpr.key")?.toString()
+            }
+        }
+    }
+}
+
 
 mavenPublishing {
     publishToMavenCentral()
@@ -83,5 +115,4 @@ mavenPublishing {
             developerConnection.set("scm:git:ssh://git@github.com/KaBoom420/KEventBus.git")
         }
     }
-
 }

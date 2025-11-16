@@ -1,5 +1,8 @@
 # ⚡ Kotlin Multiplatform EventBus
-> A lightweight, coroutine-based **Multiplatform EventBus** with delayed delivery, TTL, logging, and compile-time generated subscribers via KSP.
+KEventBus is a lightweight, Kotlin Multiplatform (KMP) event bus built on top of coroutines and SharedFlow.  
+It provides type-safe event delivery, optional TTL buffering, delayed event delivery, optional logging, and annotation-based subscribers powered by KSP.
+
+>Works on **Android, JVM, iOS, Desktop, and Kotlin Multiplatform** out of the box.
 
 [![](https://jitpack.io/v/KaBoomDev/KaBoomEventBus.svg)](https://jitpack.io/#KaBoomDev/KaBoomEventBus)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.9.24-blue.svg?logo=kotlin)](https://kotlinlang.org)
@@ -24,8 +27,40 @@
 ### 🚀 Installation
 
 Add JitPack to your repositories:
-
 ```kotlin
 repositories {
     maven { url = uri("https://jitpack.io") }
 }
+```
+
+Add the dependency:
+```kotlin
+dependencies {
+    implementation("com.github.KaBoomDev:KEventBus:1.0.0")
+}
+```
+---
+### 🧩 Basic Usage
+
+#### 1️⃣ Define your events
+```kotlin
+sealed class AppEvent {
+    data class UserLoggedIn(val userId: String) : AppEvent()
+    object Logout : AppEvent()
+}
+```
+#### 2️⃣ Subscribe to events
+```kotlin
+onEvent<AppEvent.UserLoggedIn> { event ->
+    println("👤 User logged in: ${event.userId}")
+}
+
+onEvent<AppEvent.Logout> {
+    println("🚪 User logged out")
+}
+
+```
+
+## To be continued...
+
+
