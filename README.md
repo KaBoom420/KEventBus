@@ -34,7 +34,7 @@ repositories {
 }
 ```
 
-===
+---
 ### 🧩 Basic Usage
 
 #### 1️⃣ Define your events
